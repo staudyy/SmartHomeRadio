@@ -2,6 +2,9 @@ import pychromecast
 from time import sleep
 from flask import Flask, request, render_template
 
+CHROMECAST_FRIENDLY_NAME = "<Replace this with your chromecast friendly_name>"
+
+
 class Queue:
     def __init__(self):
         self.queue = []
@@ -91,6 +94,7 @@ class Chromecast:
             if tries > 5:
                 self.processing(False)
                 return
+            self.processing(False)
             self.connect(tries=tries)
             return
 
@@ -269,7 +273,7 @@ def setup():
 
 
 #OTHER
-chromecast = Chromecast("Audio-Pracovna")
+chromecast = Chromecast(CHROMECAST_FRIENDLY_NAME)
 
 
 # "Audio-Pracovna" 
